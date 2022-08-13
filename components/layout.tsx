@@ -1,13 +1,21 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import { PropsWithChildren } from 'react'
 import utilStyles from '../styles/utils.module.css'
 import styles from './layout.module.css'
 
 const name = 'Tyler Watts'
 export const siteTitle = 'Next.js Sample Website'
 
-export default function Layout({ children, home }) {
+export interface LayoutProps {
+	home?: boolean
+}
+
+const Layout: React.FC<PropsWithChildren<LayoutProps>> = ({
+	children,
+	home = false,
+}) => {
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -71,3 +79,5 @@ export default function Layout({ children, home }) {
 		</div>
 	)
 }
+
+export default Layout
